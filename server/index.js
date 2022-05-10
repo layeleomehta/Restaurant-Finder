@@ -4,11 +4,20 @@ const express = require("express");
 const app = express(); 
 const port = process.env.PORT || 3001; 
 
+// middleware
+app.use(express.json()); 
+
 // routes
 // retrieve all restaurants
 app.get("/api/v1/restaurants", async (req, res) => {
     try {
-        res.json("Get route for all restaurants")
+        const result = await db.query("SELECT * FROM restaurants"); 
+
+        res.status(200).json({
+            status: "success", 
+            length: result.rowCount,
+            restaurantData: result.rows
+        }); 
     } catch (err) {
         console.log(err.message); 
         
@@ -16,8 +25,18 @@ app.get("/api/v1/restaurants", async (req, res) => {
 }); 
 
 // retrieve restaurant with specified id
-app.get("/api/v1/restaurants/:id", (req, res) => {
-    res.json(`Get route for particular restaurant with id: ${req.params.id}`); 
+app.get("/api/v1/restaurants/:id", async (req, res) => {
+    try {
+        const result = await db.query("SELECT * FROM restaurants WHERE id=$1", [req.params.id]); 
+
+        res.status(200).json({
+            status: "success", 
+            restaurantData: result.rows[0]
+        })
+    } catch (err) {
+        console.log(err.message); 
+        
+    }
 }); 
 
 // create a restaurant
