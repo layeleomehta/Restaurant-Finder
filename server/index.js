@@ -1,12 +1,18 @@
 require('dotenv').config(); 
+const db = require('./db/db.js');
 const express = require("express"); 
 const app = express(); 
 const port = process.env.PORT || 3001; 
 
 // routes
 // retrieve all restaurants
-app.get("/api/v1/restaurants", (req, res) => {
-    res.json("Get route for all restaurants")
+app.get("/api/v1/restaurants", async (req, res) => {
+    try {
+        res.json("Get route for all restaurants")
+    } catch (err) {
+        console.log(err.message); 
+        
+    }
 }); 
 
 // retrieve restaurant with specified id
