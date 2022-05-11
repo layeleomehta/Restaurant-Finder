@@ -1,8 +1,16 @@
-import React from 'react'
+import React from 'react'; 
+import Header from '../components/Homepage/Header';
+import AddRestaurant from '../components/Homepage/AddRestaurant';
+import ViewRestaurants from '../components/Homepage/ViewRestaurants';
 
 const Homepage = () => {
   return (
-    <div>Homepage Component</div>
+    <div>
+        <Header/>
+        <AddRestaurant/>
+        <ViewRestaurants/>
+
+    </div>
   )
 }
 
