@@ -1,11 +1,13 @@
 require('dotenv').config(); 
 const db = require('./db/db.js');
 const express = require("express"); 
+const cors = require("cors");
 const app = express(); 
 const port = process.env.PORT || 3001; 
 
 // middleware
-app.use(express.json()); 
+app.use(cors());
+app.use(express.json());  
 
 // routes
 // retrieve all restaurants
