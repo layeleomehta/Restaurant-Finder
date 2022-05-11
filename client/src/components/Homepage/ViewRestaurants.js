@@ -1,6 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'; 
+import { RestaurantsContext } from '../../context/RestaurantContext';
 
 const ViewRestaurants = () => {
+    const { restaurants, setRestaurants } = useContext(RestaurantsContext); 
+
   return (
     <div className='mt-4'>
         <h2 className='fw-light text-start mb-3'>All current restaurants:</h2>
@@ -16,14 +19,15 @@ const ViewRestaurants = () => {
             </tr>
         </thead>
         <tbody>
-            <tr>
+            {}
+            {/* <tr>
             <td>Dummy Wendy's</td>
             <td>Dummy New York</td>
             <td>$$$$</td>
             <td>4</td>
             <td><button>Edit</button></td>
             <td><button>Delete</button></td>
-            </tr>
+            </tr> */}
         </tbody>
         </table>
     </div>
