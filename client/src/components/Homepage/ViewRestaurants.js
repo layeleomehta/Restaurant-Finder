@@ -28,7 +28,7 @@ const ViewRestaurants = () => {
   return (
     <div className='mt-4'>
         <h2 className='fw-light text-start mb-3'>All current restaurants:</h2>
-        <table class="table table-hover">
+        <table className="table table-hover">
         <thead>
             <tr className='table-primary'>
             <th scope="col">Restaurant</th>
@@ -40,9 +40,9 @@ const ViewRestaurants = () => {
             </tr>
         </thead>
         <tbody>
-            {restaurants.map(restaurant => {
+            {restaurants && restaurants.map(restaurant => {
                 return (
-                    <tr>
+                    <tr key={restaurant.id}>
                         <td>{restaurant.name}</td>
                         <td>{restaurant.location}</td>
                         <td>{"$".repeat(restaurant.price_range)}</td>
