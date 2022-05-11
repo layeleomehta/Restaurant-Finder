@@ -23,7 +23,19 @@ const ViewRestaurants = () => {
 
       updateRestaurants(); 
     }, [])
-    
+
+    // make DELETE request here
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:4000/api/v1/restaurants/${id}`, {
+                method: "DELETE"
+            }); 
+            const data = await response.json(); 
+            setRestaurants(restaurants.filter(restaurant => restaurant.id !== id)); 
+        } catch (err) {
+            console.error(err.message); 
+        }
+    }
 
   return (
     <div className='mt-4'>
@@ -48,18 +60,10 @@ const ViewRestaurants = () => {
                         <td>{"$".repeat(restaurant.price_range)}</td>
                         <td>Rating</td>
                         <td><button className='btn btn-warning'>Edit</button></td>
-                        <td><button className='btn btn-danger'>Delete</button></td>
+                        <td><button className='btn btn-danger' onClick={() => handleDelete(restaurant.id)}>Delete</button></td>
                     </tr>
                 ); 
             })}
-            {/* <tr>
-            <td>Dummy Wendy's</td>
-            <td>Dummy New York</td>
-            <td>$$$$</td>
-            <td>4</td>
-            <td><button>Edit</button></td>
-            <td><button>Delete</button></td>
-            </tr> */}
         </tbody>
         </table>
     </div>
