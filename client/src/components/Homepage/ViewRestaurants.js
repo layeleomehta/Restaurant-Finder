@@ -1,8 +1,10 @@
 import React, {useContext, useEffect} from 'react'; 
 import { RestaurantsContext } from '../../context/RestaurantContext';
+import {useNavigate} from "react-router-dom"; 
 
 const ViewRestaurants = () => {
     const { restaurants, setRestaurants } = useContext(RestaurantsContext); 
+    let navigate = useNavigate(); 
 
     // make GET request here to update global restaurants state from context
     useEffect(() => {
@@ -22,7 +24,11 @@ const ViewRestaurants = () => {
       }; 
 
       updateRestaurants(); 
-    }, [])
+    }, []); 
+
+    const handleUpdate = (id) => {
+        navigate(`/restaurants/${id}/update`); 
+    }
 
     // make DELETE request here
     const handleDelete = async (id) => {
@@ -59,7 +65,7 @@ const ViewRestaurants = () => {
                         <td>{restaurant.location}</td>
                         <td>{"$".repeat(restaurant.price_range)}</td>
                         <td>Rating</td>
-                        <td><button className='btn btn-warning'>Edit</button></td>
+                        <td><button className='btn btn-warning' onClick={() => handleUpdate(restaurant.id)} >Edit</button></td>
                         <td><button className='btn btn-danger' onClick={() => handleDelete(restaurant.id)}>Delete</button></td>
                     </tr>
                 ); 

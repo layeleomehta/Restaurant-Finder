@@ -1,8 +1,13 @@
-import React from 'react'
+import React from 'react'; 
+import Header from '../components/RestaurantUpdate/Header';
+import UpdateForm from '../components/RestaurantUpdate/UpdateForm';
 
 const RestaurantUpdate = () => {
   return (
-    <div>Restaurant Update Component</div>
+    <div>
+    <Header/>
+    <UpdateForm/>
+    </div>
   )
 }
 
