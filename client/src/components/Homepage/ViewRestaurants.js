@@ -43,6 +43,10 @@ const ViewRestaurants = () => {
         }
     }
 
+    const handleRestaurantClick = (id) => {
+        navigate(`/restaurants/${id}`); 
+    }
+
   return (
     <div className='mt-4'>
         <h2 className='fw-light text-start mb-3'>All current restaurants:</h2>
@@ -61,7 +65,7 @@ const ViewRestaurants = () => {
             {restaurants && restaurants.map(restaurant => {
                 return (
                     <tr key={restaurant.id}>
-                        <td>{restaurant.name}</td>
+                        <td onClick={() => handleRestaurantClick(restaurant.id)} className="table-success" >{restaurant.name}</td>
                         <td>{restaurant.location}</td>
                         <td>{"$".repeat(restaurant.price_range)}</td>
                         <td>Rating</td>

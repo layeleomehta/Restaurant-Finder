@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react'; 
+import ReviewPage from '../components/RestaurantReview/ReviewPage';
 
 const RestaurantReview = () => {
   return (
-    <div>Restaurant Review Component</div>
+    <div>
+      <ReviewPage/>
+    </div>
   )
 }
 
