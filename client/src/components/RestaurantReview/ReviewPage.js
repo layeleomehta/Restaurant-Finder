@@ -26,7 +26,7 @@ const ReviewPage = () => {
         fetchRestaurant(); 
     }, []); 
 
-    console.log(selectedRestaurant.reviewData); 
+    // console.log(selectedRestaurant.reviewData); 
 
   return (
     <div>
