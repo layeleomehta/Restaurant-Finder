@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from 'react'; 
 import { RestaurantsContext } from '../../context/RestaurantContext';
 import {useNavigate} from "react-router-dom"; 
+import StarRating from '../RestaurantReview/StarRating';
 
 const ViewRestaurants = () => {
     const { restaurants, setRestaurants } = useContext(RestaurantsContext); 
@@ -68,7 +69,7 @@ const ViewRestaurants = () => {
                         <td onClick={() => handleRestaurantClick(restaurant.id)} className="table-success" >{restaurant.name}</td>
                         <td>{restaurant.location}</td>
                         <td>{"$".repeat(restaurant.price_range)}</td>
-                        <td>Rating</td>
+                        <td>{<StarRating rating={restaurant.average_rating ? restaurant.average_rating : 0}/>}</td>
                         <td><button className='btn btn-warning' onClick={() => handleUpdate(restaurant.id)} >Edit</button></td>
                         <td><button className='btn btn-danger' onClick={() => handleDelete(restaurant.id)}>Delete</button></td>
                     </tr>

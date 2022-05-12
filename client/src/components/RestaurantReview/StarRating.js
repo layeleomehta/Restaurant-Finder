@@ -13,7 +13,7 @@ const StarRating = ({rating}) => {
 
   return (
       <>
-      {stars}
+      {rating>0 ? stars : (<div>No reviews yet!</div>)}
       </>
   )
 }
